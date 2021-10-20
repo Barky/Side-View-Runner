@@ -5,17 +5,21 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     private Transform playerTarget;
+
     public float offsetZ = -8.5f; //playerdan ne kdr uzak olacaðý
     public float offsetX = 0f;
     public float constantY = 2.25f;
     public float cameraLerpTime = 0.05f;
+    public float radius;
+
+
 
     void Awake()
     {
         playerTarget = GameObject.FindGameObjectWithTag(Tags.PLAYER_TAG).transform;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (playerTarget)
         {
