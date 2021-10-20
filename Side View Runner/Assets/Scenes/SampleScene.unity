@@ -358,10 +358,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e0b93b93339dfd44bec09a1811eb3f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelLenght: 50
-  startPlatformLength: 3
+  levelLenght: 100
+  startPlatformLength: 5
   endPlatformLength: 3
-  distance_between_platforms: 3
+  distance_between_platforms: 5
   platformPrefab: {fileID: 762763593835300135, guid: 9e448d4d15726bf4bb55bb57f29e8255, type: 3}
   platform_parent: {fileID: 145389913}
   monster: {fileID: 0}
@@ -369,8 +369,8 @@ MonoBehaviour:
   health_Collectable: {fileID: 0}
   healthCollectable_parent: {fileID: 0}
   platformPosition_MinY: 0
-  platformPosition_MaxY: 10
-  platformLength_Min: 1
+  platformPosition_MaxY: 7
+  platformLength_Min: 2
   platformLength_Max: 4
   chanceForMonsterExistence: 0.25
   chanceForCollectbaleExistence: 0.1
