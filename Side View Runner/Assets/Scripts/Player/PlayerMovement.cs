@@ -18,18 +18,38 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private bool playerJumped = false;
     private bool canDoubleJump = false;
+    private bool gameStarted = false;
 
+    public PlayerAnimation playerAnim;
+
+    IEnumerator StartGame()
+    {
+        yield return new WaitForSeconds(2f);
+        Debug.Log("çalýþtý be oh sonunda amk");
+        gameStarted = true;
+        playerAnim.playerRun();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(StartGame());
+    }
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        playerAnim = GetComponent<PlayerAnimation>();
     }
 
     void FixedUpdate()
     {
         //fizik kullanýyosan fixedupdatede çaðýrmak daha mantýklý
-        PlayerMove();
-        playerGrounded();
-        playerJump();
+
+        if (gameStarted)
+        {
+            PlayerMove();
+            playerGrounded();
+            playerJump();
+        }
     }
 
     void PlayerMove()
@@ -40,7 +60,11 @@ public class PlayerMovement : MonoBehaviour
     void playerGrounded()
     {
         isGrounded = Physics.OverlapSphere(groundCheckPosition.position, radius, layerGround).Length >0; //groundcheckposition'ýn radius kadar çevresinde bir bölge oluþturup layerground'a uzaklýðýna bakar.
-        
+        if(isGrounded && playerJumped)
+        {
+            playerJumped = false;
+            playerAnim.didLand();
+        }
     }
 
     void playerJump()
@@ -49,19 +73,20 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && !isGrounded && canDoubleJump)
         {
-            Debug.Log("ikinci jump");
             canDoubleJump = false;
             rb.AddForce(new Vector3(0, secondJumpPower, 0));
         }
 
         else if (Input.GetKeyUp(KeyCode.Space) && isGrounded)
         {
-
-            Debug.Log("ilk jump");
+            playerAnim.didJump();
             rb.AddForce(new Vector3(0, jumpPower, 0));
             playerJumped = true;
             canDoubleJump = true;
         } 
     }
+
+
+
 
 }//class
