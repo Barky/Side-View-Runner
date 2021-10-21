@@ -16,4 +16,8 @@ public class Tags
     public static string ANIMATION_JUMPLAND = "jumpLand";
     public static string ANIMATION_LEDGEFALL = "ledgeFall";
 
+    //gameobject names
+
+    public static string BACKGROUND_OBJ = "Background";
+
 }

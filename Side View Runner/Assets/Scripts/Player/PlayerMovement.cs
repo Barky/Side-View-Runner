@@ -20,24 +20,31 @@ public class PlayerMovement : MonoBehaviour
     private bool canDoubleJump = false;
     private bool gameStarted = false;
 
-    public PlayerAnimation playerAnim;
+    private PlayerAnimation playerAnim;
+
+    public GameObject smokePosition;
+
+    private BGScroller bg_scroller;
 
     IEnumerator StartGame()
     {
         yield return new WaitForSeconds(2f);
-        Debug.Log("çalýþtý be oh sonunda amk");
         gameStarted = true;
+        smokePosition.SetActive(true);
+        bg_scroller.canScroll = true;
         playerAnim.playerRun();
     }
 
     private void Start()
     {
+        smokePosition.SetActive(false);
         StartCoroutine(StartGame());
     }
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         playerAnim = GetComponent<PlayerAnimation>();
+        bg_scroller = GameObject.Find(Tags.BACKGROUND_OBJ).GetComponent<BGScroller>();
     }
 
     void FixedUpdate()
