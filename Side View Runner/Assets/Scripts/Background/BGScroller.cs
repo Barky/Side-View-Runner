@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class BGScroller : MonoBehaviour
 {
-    [HideInInspector] public bool canScroll = false;
-    public float offsetSpeed = -0006f;
+    [HideInInspector] public bool canScroll;
+    public float offsetSpeed = -0.001f;
 
     private Renderer myRenderer;
 
-    private void Awake()
+     void Awake()
     {
         myRenderer = GetComponent<MeshRenderer>();
 
     }
 
-    private void Update()
+     void Update()
     {
         if (canScroll)
         {
-            myRenderer.material.mainTextureOffset = new Vector2(offsetSpeed, 0);
+            myRenderer.material.mainTextureOffset -= new Vector2(offsetSpeed, 0);
         }
     }
 

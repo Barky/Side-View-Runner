@@ -7,6 +7,8 @@ public class Tags
     public static string PLAYER_TAG = "Player";
     public static string PLATFORM_TAG = "Platform";
 
+    public static string MORE_PLATFORMS = "MorePlatforms";
+
     //Player Animation Tags
     public static string ANIMATION_IDLE = "idle";
     public static string ANIMATION_WALK_ = "walk";
@@ -19,5 +21,6 @@ public class Tags
     //gameobject names
 
     public static string BACKGROUND_OBJ = "Background";
+    public static string LEVEL_GENERATOR_OBJ = "LevelGenerator";
 
 }

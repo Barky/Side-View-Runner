@@ -35,7 +35,7 @@ public class LevelGenerator : MonoBehaviour
 	[SerializeField]
 	private float healthCollectable_MinY = 1f, healthCollectable_MaxY = 3f;
 
-	private float platformLastPositionX;
+	private float platformLastPositionX; //yeni levellar üretmek için kullanýlacak
 
 	private enum PlatformType
 	{
@@ -62,7 +62,7 @@ public class LevelGenerator : MonoBehaviour
 
 	void Start()
 	{
-		GenerateLevel();
+		GenerateLevel(true);
 	}
 
 	void FillOutPositionInfo(PlatformPositionInfo[] platformInfo)
@@ -121,7 +121,7 @@ public class LevelGenerator : MonoBehaviour
 
 	}
 
-	void CreatePlatformsFromPositionInfo(PlatformPositionInfo[] platformPositionInfo)
+	void CreatePlatformsFromPositionInfo(PlatformPositionInfo[] platformPositionInfo, bool gameStarted)
 	{
 		for (int i = 0; i < platformPositionInfo.Length; i++)
 		{
@@ -135,12 +135,19 @@ public class LevelGenerator : MonoBehaviour
 			Vector3 platformPosition;
 
 			// here we are going to check if the game is started or not
-
+			if (gameStarted)
+			{
 				platformPosition = new Vector3(distance_between_platforms * i, positionInfo.positionY, 0);
-
-
+				Debug.Log("noooo");
+			}
+            else
+            {
+				Debug.Log("yesss");
+				platformPosition = new Vector3(distance_between_platforms + platformLastPositionX, positionInfo.positionY, 0);
+				
+            }
 			// save the platform position x for later use
-
+			platformLastPositionX = platformPosition.x;
 			Transform createBlock = (Transform)Instantiate(platformPrefab, platformPosition, Quaternion.identity);
 			createBlock.parent = platform_parent;
 
@@ -157,7 +164,7 @@ public class LevelGenerator : MonoBehaviour
 		} // for loop
 	}
 
-	public void GenerateLevel()
+	public void GenerateLevel(bool gameStarted)
 	{
 		PlatformPositionInfo[] platformInfo = new PlatformPositionInfo[levelLenght];
 		for (int i = 0; i < platformInfo.Length; i++)
@@ -166,7 +173,7 @@ public class LevelGenerator : MonoBehaviour
 		}
 
 		FillOutPositionInfo(platformInfo);
-		CreatePlatformsFromPositionInfo(platformInfo);
+		CreatePlatformsFromPositionInfo(platformInfo, gameStarted);
 
 	}
 
