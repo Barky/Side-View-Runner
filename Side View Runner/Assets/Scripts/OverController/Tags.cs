@@ -9,6 +9,8 @@ public class Tags
 
     public static string MORE_PLATFORMS = "MorePlatforms";
 
+    public static string HEALTH = "Health";
+    public static string MONSTER = "Monster";
     //Player Animation Tags
     public static string ANIMATION_IDLE = "idle";
     public static string ANIMATION_WALK_ = "walk";
