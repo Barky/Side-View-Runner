@@ -86,7 +86,13 @@ public class PlayerMovement : MonoBehaviour
         } 
     }
 
-
+    private void OnCollisionEnter(Collision target)
+    {
+        if (target.gameObject.tag == Tags.PLATFORM_TAG)
+        {
+            Debug.Log("platformdayýk");
+        }
+    }
 
 
 }//class
