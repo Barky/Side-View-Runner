@@ -91,7 +91,7 @@ public class LevelGenerator : MonoBehaviour
 
 			for (int i = 0; i < platformLength; i++)
 			{
-				bool has_Monster = (Random.Range(0f, 1f) < chanceForMonsterExistence);
+				bool has_Monster = (Random.Range(0f, 1f) < chanceForMonsterExistence); // chance ini belirlioz
 				bool has_healthCollectable = (Random.Range(0f, 1f) < chanceForCollectbaleExistence);
 
 				platformInfo[currentPlatformInfoIndex].platType = PlatformType.Flat;
