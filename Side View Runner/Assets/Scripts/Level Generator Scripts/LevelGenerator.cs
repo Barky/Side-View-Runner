@@ -153,8 +153,18 @@ public class LevelGenerator : MonoBehaviour
 
 			if (positionInfo.hasMonster)
 			{
+                if (gameStarted)
+                {
+					platformPosition = new Vector3(distance_between_platforms * i, positionInfo.positionY + 0.1f, 0);
+                }
+                else
+                {
+					platformPosition = new Vector3(distance_between_platforms + platformLastPositionX, positionInfo.positionY, 0);
 
-				//laTER
+				}
+
+				Transform createmonster = (Transform)Instantiate(monster, platformPosition, Quaternion.Euler(0, -90, 0)); //monster ý -90 yaptýðmz için
+				createmonster.parent = monster_parent;
 			}
 
 			if (positionInfo.hasHealthCollectable)

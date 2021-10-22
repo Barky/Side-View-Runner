@@ -82,10 +82,12 @@ public class PlayerMovement : MonoBehaviour
         {
             canDoubleJump = false;
             rb.AddForce(new Vector3(0, secondJumpPower, 0));
+            Debug.Log("2 kere zýpladýk");
         }
 
         else if (Input.GetKeyUp(KeyCode.Space) && isGrounded)
         {
+            Debug.Log("zýplýoz");
             playerAnim.didJump();
             rb.AddForce(new Vector3(0, jumpPower, 0));
             playerJumped = true;

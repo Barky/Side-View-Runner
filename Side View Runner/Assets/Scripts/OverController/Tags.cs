@@ -4,6 +4,7 @@
 
 public class Tags
 {
+    // tags
     public static string PLAYER_TAG = "Player";
     public static string PLATFORM_TAG = "Platform";
 
@@ -11,6 +12,8 @@ public class Tags
 
     public static string HEALTH = "Health";
     public static string MONSTER = "Monster";
+    public static string MONSTER_BULLET = "MonsterBullet";
+    public static string PLAYER_BULLET = "PlayerBullet";
     //Player Animation Tags
     public static string ANIMATION_IDLE = "idle";
     public static string ANIMATION_WALK_ = "walk";
