@@ -9,7 +9,7 @@ public class Tags
     public static string PLATFORM_TAG = "Platform";
 
     public static string MORE_PLATFORMS = "MorePlatforms";
-
+    public static string BOUNDS = "Bounds";
     public static string HEALTH = "Health";
     public static string MONSTER = "Monster";
     public static string MONSTER_BULLET = "MonsterBullet";

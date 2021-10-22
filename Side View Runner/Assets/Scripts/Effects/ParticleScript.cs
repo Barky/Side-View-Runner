@@ -13,7 +13,7 @@ public class ParticleScript : MonoBehaviour
     IEnumerator stopEffect()
     {
         yield return new WaitForSeconds(timer);
-        gameObject.SetActive(false);
+        Destroy(gameObject);
 
     }
 
