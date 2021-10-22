@@ -168,7 +168,18 @@ public class LevelGenerator : MonoBehaviour
 			}
 
 			if (positionInfo.hasHealthCollectable)
-			{//later
+			{
+                if (gameStarted)
+                {
+					platformPosition = new Vector3(distance_between_platforms * i, positionInfo.positionY + Random.Range(healthCollectable_MinY, healthCollectable_MaxY), 0);
+				}
+                else
+                {
+					platformPosition = new Vector3(distance_between_platforms + platformLastPositionX, positionInfo.positionY + Random.Range(healthCollectable_MinY, healthCollectable_MaxY), 0);
+				}
+
+				Transform createHealthCollectable = (Transform)Instantiate(health_Collectable, platformPosition, Quaternion.identity);
+				createHealthCollectable.parent = healthCollectable_parent;
 			}
 
 		} // for loop

@@ -44,7 +44,7 @@ public class PlayerHealthDamageShoot : MonoBehaviour
         // oyunun bittiðini game controller a söyleme scripti yazýlacak.
         if(target.tag == Tags.MONSTER_BULLET || target.tag == Tags.BOUNDS)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
 
         if(target.tag == Tags.HEALTH)
@@ -70,7 +70,7 @@ public class PlayerHealthDamageShoot : MonoBehaviour
         if(target.gameObject.tag == Tags.MONSTER)
         {
             //playerýn öldüðünü gamecontroller a söleme scripti yaz
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 

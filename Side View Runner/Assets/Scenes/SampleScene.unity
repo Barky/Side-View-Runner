@@ -396,6 +396,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2818869ae1a40594a8dfc46f465bcedf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &686911207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 686911208}
+  m_Layer: 0
+  m_Name: Health_Parent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &686911208
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686911207}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2067176677}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,6 +665,10 @@ PrefabInstance:
       propertyPath: groundCheckPosition
       value: 
       objectReference: {fileID: 166310732}
+    - target: {fileID: 2050212721201955194, guid: 75c76cbb0eb611946af2512e9ed96aa4, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: d0b46a29b6f00e048b5a0c90659d1102, type: 2}
     - target: {fileID: 2050212721236515013, guid: 75c76cbb0eb611946af2512e9ed96aa4, type: 3}
       propertyPath: m_Animation
       value: 
@@ -1969,14 +2003,14 @@ MonoBehaviour:
   platform_parent: {fileID: 145389913}
   monster: {fileID: 6533593677939049164, guid: c7f37e5476697c144ab0d6c395a26e31, type: 3}
   monster_parent: {fileID: 1275835652}
-  health_Collectable: {fileID: 0}
-  healthCollectable_parent: {fileID: 0}
+  health_Collectable: {fileID: 7210428970560528161, guid: 3e140bfe6f68e084dbda51a5504812e4, type: 3}
+  healthCollectable_parent: {fileID: 686911208}
   platformPosition_MinY: 0
   platformPosition_MaxY: 0
   platformLength_Min: 2
   platformLength_Max: 4
-  chanceForMonsterExistence: 0.6
-  chanceForCollectbaleExistence: 0.1
+  chanceForMonsterExistence: 0
+  chanceForCollectbaleExistence: 0.8
   healthCollectable_MinY: 1
   healthCollectable_MaxY: 3
 --- !u!4 &2067176677
@@ -1992,6 +2026,7 @@ Transform:
   m_Children:
   - {fileID: 145389913}
   - {fileID: 1275835652}
+  - {fileID: 686911208}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
