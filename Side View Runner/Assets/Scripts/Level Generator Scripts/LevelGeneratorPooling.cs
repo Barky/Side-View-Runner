@@ -53,6 +53,7 @@ public class LevelGeneratorPooling : MonoBehaviour
             platformArray[i].parent = platform_parent;
 
             //spawn monsters and healths scripts later
+            SpawnHealthandMonster(platformPosition, i, true);
         }
 
 
@@ -67,13 +68,50 @@ public class LevelGeneratorPooling : MonoBehaviour
             {
                 platformArray[i].gameObject.SetActive(true);
                 float platformPositionY = Random.Range(min_position_y, max_position_y);
-                Vector3 platformPosition = new Vector3(distance_between_platforms * platform_last_pos_x, platformPositionY, 0);
+                Vector3 platformPosition = new Vector3(distance_between_platforms + platform_last_pos_x, platformPositionY, 0);
 
                 platformArray[i].position = platformPosition;
                 platform_last_pos_x = platformPosition.x;
 
                 //spawn monsters and healths scripts later
+                SpawnHealthandMonster(platformPosition, i, false);
+            }
+        }
+    }
 
+    void SpawnHealthandMonster(Vector3 platformposition, int i, bool gameStarted)
+    {
+        if (i > 2)
+        {
+            if(Random.Range(0,1f) < chance_for_monster)
+            {
+                if (gameStarted)
+                {
+                    platformposition = new Vector3(distance_between_platforms * i, platformposition.y + 0.1f, 0);
+                }
+                else
+                {
+                    platformposition = new Vector3(distance_between_platforms + platform_last_pos_x, platformposition.y + 0.1f, 0);
+                }
+                Transform create_monster = (Transform)Instantiate(monster, platformposition, Quaternion.Euler(0, -90, 0));
+                create_monster.parent = monster_parent;
+            }
+
+            if (Random.Range(0, 1f) < chance_for_health)
+            {
+
+                if (gameStarted)
+                {
+                    float health_y = Random.Range(health_min_y, health_max_y);
+                    platformposition = new Vector3(distance_between_platforms * i, platformposition.y + health_y, 0);
+                }
+                else
+                {
+                    float health_y = Random.Range(health_min_y, health_max_y);
+                    platformposition = new Vector3(distance_between_platforms + platform_last_pos_x, platformposition.y + health_y, 0);
+                }
+                Transform create_health = (Transform)Instantiate(health, platformposition, Quaternion.identity);
+                create_health.parent = health_parent;
             }
         }
     }
