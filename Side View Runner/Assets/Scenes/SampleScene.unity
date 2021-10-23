@@ -302,7 +302,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2067176677}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &166310731
 GameObject:
@@ -424,7 +424,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2067176677}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -1661,12 +1661,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275835651}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2067176677}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1639942679 stripped
 GameObject:
@@ -1976,6 +1976,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2067176677}
   - component: {fileID: 2067176676}
+  - component: {fileID: 2067176678}
   m_Layer: 0
   m_Name: LevelGenerator
   m_TagString: Untagged
@@ -1990,7 +1991,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2067176675}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e0b93b93339dfd44bec09a1811eb3f2, type: 3}
   m_Name: 
@@ -2024,12 +2025,38 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 686911208}
   - {fileID: 145389913}
   - {fileID: 1275835652}
-  - {fileID: 686911208}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2067176678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067176675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a4559e8fa948f4e976f0d36e63a2e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platform: {fileID: 762763593835300135, guid: 9e448d4d15726bf4bb55bb57f29e8255, type: 3}
+  platform_parent: {fileID: 145389913}
+  monster: {fileID: 0}
+  monster_parent: {fileID: 0}
+  health: {fileID: 0}
+  health_parent: {fileID: 0}
+  levelLength: 100
+  distance_between_platforms: 3
+  min_position_y: 0
+  max_position_y: 0
+  chance_for_monster: 0.25
+  chance_for_health: 0.1
+  health_min_y: 1
+  health_max_y: 3
 --- !u!4 &2106853306 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5371367817118558869, guid: dd8e8e1b6c67885448c4a3b1be90010f, type: 3}
