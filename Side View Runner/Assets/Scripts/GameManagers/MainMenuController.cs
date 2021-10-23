@@ -7,9 +7,8 @@ public class MainMenuController : MonoBehaviour
 {
     public void playGame()
     {
+        GameManager.instance.gameStartedfromMainMenu = true;
         SceneManager.LoadScene("Game");
     }
-
-
 
 }

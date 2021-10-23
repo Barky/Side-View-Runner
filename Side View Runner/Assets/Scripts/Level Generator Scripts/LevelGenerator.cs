@@ -138,11 +138,11 @@ public class LevelGenerator : MonoBehaviour
 			if (gameStarted)
 			{
 				platformPosition = new Vector3(distance_between_platforms * i, positionInfo.positionY, 0);
-				Debug.Log("noooo");
+				
 			}
             else
             {
-				Debug.Log("yesss");
+				
 				platformPosition = new Vector3(distance_between_platforms + platformLastPositionX, positionInfo.positionY, 0);
 				
             }
