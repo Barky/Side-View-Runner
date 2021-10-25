@@ -823,7 +823,7 @@ GameObject:
   - component: {fileID: 765327232}
   - component: {fileID: 765327231}
   m_Layer: 5
-  m_Name: ScoreText
+  m_Name: Score Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2916,6 +2916,54 @@ MonoBehaviour:
   chance_for_health: 0.1
   health_min_y: 1
   health_max_y: 3
+--- !u!1 &2091478909
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2091478911}
+  - component: {fileID: 2091478910}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2091478910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091478909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656e3ee01ceebda4b888d65589541c97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameStartedfromMainMenu: 0
+  gameStartedfromPlayerDied: 0
+  health: 0
+  score: 0
+  level: 0
+--- !u!4 &2091478911
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091478909}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -34.840054, y: 9.552091, z: 70.25466}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2106853306 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5371367817118558869, guid: dd8e8e1b6c67885448c4a3b1be90010f, type: 3}

@@ -9,13 +9,15 @@ public class GameplayController : MonoBehaviour
     private Text scoreText, healthText, levelText;
 
     private float score, health, level;
-    private void Start()
-    {
-        scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
-        healthText = GameObject.Find("HealthText").GetComponent<Text>(); 
-        levelText = GameObject.Find("LevelText").GetComponent<Text>();
 
+    private void Awake()
+    {
+        scoreText = GameObject.Find("Score Text").GetComponent<Text>();
+        healthText = GameObject.Find("HealthText").GetComponent<Text>();
+        levelText = GameObject.Find("LevelText").GetComponent<Text>();
     }
+
+
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneWasLoaded;
@@ -45,9 +47,11 @@ public class GameplayController : MonoBehaviour
                 level = GameManager.instance.level;
 
             }
-            Debug.Log("yazdýrýo");
-            healthText.text = health.ToString();
+
+            Debug.Log(health);
+            
             scoreText.text = score.ToString();
+            healthText.text = health.ToString();
             levelText.text = level.ToString();
         }
     }
