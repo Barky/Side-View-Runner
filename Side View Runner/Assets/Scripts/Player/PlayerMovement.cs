@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody rb;
 
-    public float movementSpeed = 5f;
+     public float movementSpeed = 2.4f;
     public float jumpPower = 10f;
     public float secondJumpPower = 10f;
     public float radius = 0.3f;
-
+    private Button jumpButton;
     public Transform groundCheckPosition;
 
     public LayerMask layerGround;
@@ -34,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
         gameStarted = true;
         smokePosition.SetActive(true);
         playerShoot.canShoot = true;
+        GameplayController.instance.canCountScore = true;
         bg_scroller.canScroll = true;
         playerAnim.playerRun();
     }
@@ -49,6 +51,8 @@ public class PlayerMovement : MonoBehaviour
         playerAnim = GetComponent<PlayerAnimation>();
         bg_scroller = GameObject.Find(Tags.BACKGROUND_OBJ).GetComponent<BGScroller>();
         playerShoot = GetComponent<PlayerHealthDamageShoot>();
+        jumpButton = GameObject.Find("Jump").GetComponent<Button>();
+        jumpButton.onClick.AddListener( () => Jump());
     }
 
     void FixedUpdate()
@@ -59,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
         {
             PlayerMove();
             playerGrounded();
-            playerJump();
+            //playerJump();
         }
     }
 
@@ -77,27 +81,44 @@ public class PlayerMovement : MonoBehaviour
             playerAnim.didLand();
         }
     }
-
-    void playerJump()
+    public void Jump()
     {
-
-
-        if (Input.GetKeyDown(KeyCode.Space) && !isGrounded && canDoubleJump)
+        if (!isGrounded && canDoubleJump)
         {
             canDoubleJump = false;
             rb.AddForce(new Vector3(0, secondJumpPower, 0));
             Debug.Log("2 kere zýpladýk");
         }
 
-        else if (Input.GetKeyUp(KeyCode.Space) && isGrounded)
+        else if (isGrounded)
         {
             Debug.Log("zýplýoz");
             playerAnim.didJump();
             rb.AddForce(new Vector3(0, jumpPower, 0));
             playerJumped = true;
             canDoubleJump = true;
-        } 
+        }
     }
+    //void playerJump()
+    //{
+
+
+    //    if (Input.GetKeyDown(KeyCode.Space) && !isGrounded && canDoubleJump)
+    //    {
+    //        canDoubleJump = false;
+    //        rb.AddForce(new Vector3(0, secondJumpPower, 0));
+    //        Debug.Log("2 kere zýpladýk");
+    //    }
+
+    //    else if (Input.GetKeyUp(KeyCode.Space) && isGrounded)
+    //    {
+    //        Debug.Log("zýplýoz");
+    //        playerAnim.didJump();
+    //        rb.AddForce(new Vector3(0, jumpPower, 0));
+    //        playerJumped = true;
+    //        canDoubleJump = true;
+    //    } 
+    //}
 
     private void OnCollisionEnter(Collision target)
     {

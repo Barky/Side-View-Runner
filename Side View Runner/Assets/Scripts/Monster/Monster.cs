@@ -79,27 +79,31 @@ public class Monster : MonoBehaviour
             newBullet.parent = transform;
         }
     }
-    void MonsterDied()
-    {
-        Vector3 effectposition = transform.position;
-        effectposition.y += 2f;
-        Instantiate(monsterDiedEffect, effectposition, Quaternion.identity);
-        Destroy(gameObject);
-    }
     private void OnTriggerEnter(Collider target)
     {
-        if(target.tag == Tags.PLAYER_BULLET)
+        if (target.tag == Tags.PLAYER_BULLET)
         {
+            GameplayController.instance.IncrementScore(200);
             MonsterDied();
         }
     }
 
     private void OnCollisionEnter(Collision target)
     {
+
+
         if(target.gameObject.tag == Tags.PLAYER_TAG)
         {
             MonsterDied();
         }
+    }
+
+    void MonsterDied()
+    {
+        Vector3 effectposition = transform.position;
+        effectposition.y += 2f;
+        Instantiate(monsterDiedEffect, effectposition, Quaternion.identity);
+        Destroy(gameObject);
     }
 
 }

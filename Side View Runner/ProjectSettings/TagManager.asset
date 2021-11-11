@@ -9,8 +9,10 @@ TagManager:
   - HealthBullet
   - MonsterBullet
   - Bounds
-  - Heath
   - MorePlatforms
+  - Health
+  - Heath
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX

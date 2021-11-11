@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 261311379712028954}
   - component: {fileID: 7300146364309480710}
   - component: {fileID: 871350759691628843}
-  m_Layer: 9
+  - component: {fileID: 8454463258827676372}
+  m_Layer: 10
   m_Name: Player Bullet
-  m_TagString: MonsterBullet
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,7 +92,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5232134512836015884}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -112,3 +113,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8454463258827676372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5232134512836015884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b2ba42833718e541b125ea27dd6c5ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 3

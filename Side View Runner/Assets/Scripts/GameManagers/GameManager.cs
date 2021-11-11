@@ -10,12 +10,22 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public float health, score, level;
 
-
+    [HideInInspector] public bool canPlayMusic = true;
     private void Awake()
     {
         MakeSingleton();
     }
-
+    private void Update()
+    {
+        if (canPlayMusic)
+        {
+            Debug.Log("muzýk calýo");
+        }
+        else
+        {
+            Debug.Log("muzýk calmýoooo");
+        }
+    }
     void MakeSingleton()
     {
         if (instance != null)

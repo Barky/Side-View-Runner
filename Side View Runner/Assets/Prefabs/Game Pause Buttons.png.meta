@@ -1,7 +1,25 @@
 fileFormatVersion: 2
 guid: 6927311422a44714a8ffedf6430952ed
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -2564175831465536480
+    second: Game Pause Buttons_home
+  - first:
+      213: -2261090930850687079
+    second: Game Pause Buttons_replay
+  - first:
+      213: -5661117911622163566
+    second: Game Pause Buttons_resume
+  - first:
+      213: -7537381379486469834
+    second: Game Pause Buttons_3
+  - first:
+      213: -4540111210465233728
+    second: Game Pause Buttons_4
+  - first:
+      213: 1361471178626149735
+    second: Game Pause Buttons_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +59,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -125,7 +143,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Game Pause Buttons_home
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 154
+        width: 182
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 024dad7baa73a6cd0800000000000000
+      internalID: -2564175831465536480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Pause Buttons_replay
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 128
+        width: 182
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99799c537cdfe90e0800000000000000
+      internalID: -2261090930850687079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Pause Buttons_resume
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 77
+        width: 223
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 293e826d04baf61b0800000000000000
+      internalID: -5661117911622163566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Pause Buttons_3
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 64
+        width: 182
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 631b013f197d56790800000000000000
+      internalID: -7537381379486469834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Pause Buttons_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 223
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c4737b98e84ef0c0800000000000000
+      internalID: -4540111210465233728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Game Pause Buttons_5
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 182
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76da1f5d2dae4e210800000000000000
+      internalID: 1361471178626149735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
