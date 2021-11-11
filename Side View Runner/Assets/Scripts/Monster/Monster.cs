@@ -15,13 +15,16 @@ public class Monster : MonoBehaviour
     private bool isPlayerInRegion = false;
 
     private Transform playerTransform;
-    public bool canShoot;
+    public bool canShoot, canMove;
+    PlayerMovement movements;
 
    // private string FUNCTION_TO_INVOKE = "startShooting";   kafam karýþmasýn diye yazmadým þimdi. ama normalde yap bunu.
 
     private void Start()
     {
-        if(Random.Range(0.0f, 1.0f) > 0.5f)
+        movements = GameObject.Find("Player").GetComponent<PlayerMovement>();
+
+        if (Random.Range(0.0f, 1.0f) > 0.5f)
         {
             moveRight = true;
         }
@@ -35,19 +38,24 @@ public class Monster : MonoBehaviour
     }
     private void Update()
     {
+        canShoot = movements.gameStarted;
+        canMove  = movements.gameStarted;
         if (playerTransform)
         {
             float distanceFromPlayer = (playerTransform.position - transform.position).magnitude;
             if(distanceFromPlayer < distancefromPlayertoStartMove)
             {
-                if (moveRight)
+                if (canMove)
                 {
-                    transform.position = new Vector3(transform.position.x + Time.deltaTime * movementSpeed, transform.position.y, transform.position.z);
-                }
-                else
-                {
-                    transform.position = new Vector3(transform.position.x - Time.deltaTime * movementSpeed, transform.position.y, transform.position.z);
+                    if (moveRight)
+                    {
+                        transform.position = new Vector3(transform.position.x + Time.deltaTime * movementSpeed, transform.position.y, transform.position.z);
+                    }
+                    else
+                    {
+                        transform.position = new Vector3(transform.position.x - Time.deltaTime * movementSpeed, transform.position.y, transform.position.z);
 
+                    }
                 }
                 if (!isPlayerInRegion)
                 {
@@ -75,7 +83,7 @@ public class Monster : MonoBehaviour
             bulletPosition.x -= 1f;
             Transform newBullet = (Transform)Instantiate(Bullet, bulletPosition, Quaternion.identity);
 
-            newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 1500f);
+            newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 800f);
             newBullet.parent = transform;
         }
     }

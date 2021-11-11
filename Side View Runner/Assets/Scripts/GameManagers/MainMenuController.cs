@@ -6,8 +6,10 @@ using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
+
     [SerializeField] private Button musicButton;
     [SerializeField] private Sprite soundOn, soundOff;
+
     public void playGame()
     {
         GameManager.instance.gameStartedfromMainMenu = true;

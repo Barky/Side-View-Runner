@@ -15,17 +15,6 @@ public class GameManager : MonoBehaviour
     {
         MakeSingleton();
     }
-    private void Update()
-    {
-        if (canPlayMusic)
-        {
-            Debug.Log("muzýk calýo");
-        }
-        else
-        {
-            Debug.Log("muzýk calmýoooo");
-        }
-    }
     void MakeSingleton()
     {
         if (instance != null)

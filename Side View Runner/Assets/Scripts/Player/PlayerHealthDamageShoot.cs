@@ -66,9 +66,13 @@ public class PlayerHealthDamageShoot : MonoBehaviour
         {
 
            GameplayController.instance.TakeDamage();
-        }
 
-        if(target.tag == "Health")
+        }
+        if (target.tag == Tags.MONSTER_BULLET)
+        {
+            target.gameObject.SetActive(false);
+        }
+        if (target.tag == "Health")
         {
             Debug.Log("health e çarpmýþ olmalýyýz.");
             GameplayController.instance.IncrementHealth();

@@ -1218,4 +1218,4 @@ MonoBehaviour:
   distancefromPlayertoStartMove: 20
   moveSpeedMinimum: 1
   moveSpeedMaximum: 2
-  canShoot: 0
+  canShoot: 1

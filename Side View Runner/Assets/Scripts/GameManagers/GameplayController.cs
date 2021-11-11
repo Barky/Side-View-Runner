@@ -31,8 +31,11 @@ public class GameplayController : MonoBehaviour
         {
             audios.Play();
         }
+        else if (!GameManager.instance.canPlayMusic)
+        {
+            audios.Stop();
+        }
 
-        
     }
     private void Awake()
     {
@@ -47,18 +50,18 @@ public class GameplayController : MonoBehaviour
 
         pausePanel.SetActive(false);
 
-        highscore = PlayerPrefs.GetFloat("highScoreKey", 0f);
-        levelText.text = highscore.ToString();
+        level = PlayerPrefs.GetFloat("highScoreKey");
+        levelText.text = level.ToString();
     }
     private void Update()
     {
         IncrementScore(1);
 
-        if (score > highscore)
+        if (score > level)
         {
-            highscore = score;
-            levelText.text = highscore.ToString();
-            PlayerPrefs.SetFloat("highScoreKey", highscore);
+            level = score;
+            levelText.text = level.ToString();
+            PlayerPrefs.SetFloat("highScoreKey", level);
             PlayerPrefs.Save();
         }
     }
@@ -89,7 +92,7 @@ public class GameplayController : MonoBehaviour
                 GameManager.instance.gameStartedfromMainMenu = false;
                 health = 3;
                 score = 0;
-                level = 0;
+                level = PlayerPrefs.GetFloat("highScoreKey");
                 Debug.Log("gamestartedmainmenu çalýþtý");
             }
             else if (GameManager.instance.gameStartedfromPlayerDied)
@@ -97,7 +100,7 @@ public class GameplayController : MonoBehaviour
                 GameManager.instance.gameStartedfromPlayerDied = false;
                 health = GameManager.instance.health;
                 score = GameManager.instance.score;
-               // level = GameManager.instance.level;
+               level = GameManager.instance.level;
 
             }
 
@@ -156,16 +159,22 @@ public class GameplayController : MonoBehaviour
 
     public void BackToMainMenu()
     {
+
+        PlayerPrefs.SetFloat("highScoreKey", level);
+        PlayerPrefs.Save();
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
 
     public void ReplayGame()
     {
+
+        PlayerPrefs.SetFloat("highScoreKey", level);
+        PlayerPrefs.Save();
         GameManager.instance.gameStartedfromMainMenu = true;
         SceneManager.LoadScene("Game");
         Time.timeScale = 1f;
-        
+
     }
     IEnumerator PlayerDied(string scenename)
     {
@@ -180,6 +189,9 @@ public class GameplayController : MonoBehaviour
         Debug.Log("numeratör çalýþýo");
         //Time.timeScale = 0f;
         Destroy(player);
+
+        PlayerPrefs.SetFloat("highScoreKey", level);
+        PlayerPrefs.Save();
         yield return new WaitForSecondsRealtime(3f);
         SceneManager.LoadScene(scenename);
     }

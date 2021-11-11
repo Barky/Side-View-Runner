@@ -473,8 +473,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 322, y: 1.95}
-  m_SizeDelta: {x: 35.505, y: 30}
+  m_AnchoredPosition: {x: 365.45425, y: 4.3}
+  m_SizeDelta: {x: 126.213, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &377765914
 MonoBehaviour:
@@ -1232,7 +1232,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2050212721201955191, guid: 75c76cbb0eb611946af2512e9ed96aa4, type: 3}
       propertyPath: jumpPower
-      value: 15
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 2050212721201955191, guid: 75c76cbb0eb611946af2512e9ed96aa4, type: 3}
       propertyPath: playerAnim
@@ -1240,7 +1240,7 @@ PrefabInstance:
       objectReference: {fileID: 1639942685}
     - target: {fileID: 2050212721201955191, guid: 75c76cbb0eb611946af2512e9ed96aa4, type: 3}
       propertyPath: movementSpeed
-      value: 2.4
+      value: 2.8
       objectReference: {fileID: 0}
     - target: {fileID: 2050212721201955191, guid: 75c76cbb0eb611946af2512e9ed96aa4, type: 3}
       propertyPath: smokePosition
@@ -3691,10 +3691,10 @@ MonoBehaviour:
   platformPosition_MaxY: 0
   platformLength_Min: 2
   platformLength_Max: 4
-  chanceForMonsterExistence: 0
-  chanceForCollectbaleExistence: 0.8
+  chanceForMonsterExistence: 0.5
+  chanceForCollectbaleExistence: 0.3
   healthCollectable_MinY: 1
-  healthCollectable_MaxY: 3
+  healthCollectable_MaxY: 2
 --- !u!4 &2067176677
 Transform:
   m_ObjectHideFlags: 0
@@ -3734,8 +3734,8 @@ MonoBehaviour:
   distance_between_platforms: 3
   min_position_y: 0
   max_position_y: 0
-  chance_for_monster: 0.8
-  chance_for_health: 0.5
+  chance_for_monster: 0.4
+  chance_for_health: 0.2
   health_min_y: 1
   health_max_y: 2
 --- !u!1 &2091478909

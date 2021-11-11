@@ -234,9 +234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d61b97785a6ac740a88f744b76ff859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
-  jumpPower: 10
-  secondJumpPower: 10
+  movementSpeed: 2.8
+  jumpPower: 5.5
   radius: 0.3
   groundCheckPosition: {fileID: 0}
   layerGround:
