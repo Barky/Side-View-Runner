@@ -1,1 +1,4 @@
 # Side-View-Runner
+
+GAME FINISHED. 
+README WILL BE WRITTEN.
