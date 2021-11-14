@@ -12,7 +12,7 @@ public class GameplayController : MonoBehaviour
 
     public static GameplayController instance;
 
-    [SerializeField] private AudioSource audios;
+    //[SerializeField] private AudioSource audios;
 
     [SerializeField] private GameObject player;
 
@@ -27,14 +27,14 @@ public class GameplayController : MonoBehaviour
 
     private void Start()
     {
-        if (GameManager.instance.canPlayMusic)
-        {
-            audios.Play();
-        }
-        else if (!GameManager.instance.canPlayMusic)
-        {
-            audios.Stop();
-        }
+        //if (GameManager.instance.canPlayMusic)
+        //{
+        //    audios.Play();
+        //}
+        //else if (!GameManager.instance.canPlayMusic)
+        //{
+        //    audios.Stop();
+        //}
 
     }
     private void Awake()
@@ -52,6 +52,14 @@ public class GameplayController : MonoBehaviour
 
         level = PlayerPrefs.GetFloat("highScoreKey");
         levelText.text = level.ToString();
+        StartCoroutine(positioncheck());
+    }
+
+
+    IEnumerator positioncheck()
+    {
+        yield return new WaitForSeconds(4f);
+        Debug.Log("gameplaycontroller scriptinden: " + player.transform.position.x);
     }
     private void Update()
     {
@@ -93,7 +101,6 @@ public class GameplayController : MonoBehaviour
                 health = 3;
                 score = 0;
                 level = PlayerPrefs.GetFloat("highScoreKey");
-                Debug.Log("gamestartedmainmenu çalýþtý");
             }
             else if (GameManager.instance.gameStartedfromPlayerDied)
             {
@@ -104,7 +111,7 @@ public class GameplayController : MonoBehaviour
 
             }
 
-            Debug.Log(health);
+
             
             scoreText.text = score.ToString();
             healthText.text = health.ToString();
@@ -122,7 +129,6 @@ public class GameplayController : MonoBehaviour
         }
         else
         {
-            Debug.Log("öldün");
             StartCoroutine(PlayerDied("MainMenu"));
         }
     }
@@ -130,7 +136,6 @@ public class GameplayController : MonoBehaviour
     {
         health++;
         healthText.text = health.ToString();
-        Debug.Log("incrementhealthçalýþtý");
     }
 
     public void IncrementScore(int scoreValue)
@@ -186,7 +191,6 @@ public class GameplayController : MonoBehaviour
         Vector3 fxposition = transform.position;
         fxposition.y += 2f;
         Instantiate(deathParticle, fxposition, Quaternion.identity);
-        Debug.Log("numeratör çalýþýo");
         //Time.timeScale = 0f;
         Destroy(player);
 

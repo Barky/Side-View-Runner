@@ -6,11 +6,10 @@ public class CameraFollow : MonoBehaviour
 {
     private Transform playerTarget;
 
-    public float offsetZ = -8.5f; //playerdan ne kdr uzak olacaðý
-    public float offsetX = 0f;
-    public float constantY = 2.25f;
-    public float cameraLerpTime = 0.05f;
-    public float radius;
+    private float offsetZ = -8.5f; //playerdan ne kdr uzak olacaðý
+    private float offsetX = 8f;
+    private float constantY = 3.52f;
+    private float cameraLerpTime = 0.05f;
 
 
 
@@ -23,7 +22,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (playerTarget)
         {
-            Vector3 TargetPosition = new Vector3(playerTarget.position.x + offsetX, constantY, playerTarget.position.y + offsetZ);
+            Vector3 TargetPosition = new Vector3(playerTarget.position.x + offsetX, constantY, playerTarget.position.z + offsetZ);
             transform.position = Vector3.Lerp(transform.position, TargetPosition, cameraLerpTime); // þu anki pozisyon, target pozisyon, oraya geçme zamaný
         }
     }

@@ -4,34 +4,61 @@ using UnityEngine;
 
 public class BulletControl : MonoBehaviour
 {
-    public float lifeTime = 5f;
+    private float lifeTime = 6f;
     private float startY;
 
+    private Transform player;
+
+
+    private void Awake()
+    {
+        //startY = transform.position.y;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
     private void Start()
     {
         startY = transform.position.y;
+        StartCoroutine(turnoffBullet());
     }
 
     private void Update()
     {
-        
-    }
-    private void LateUpdate()
-    {
         transform.position = new Vector3(transform.position.x, startY, transform.position.z);
+        if (player)
+        {
+            if (gameObject.tag == "PlayerBullet")
+            {
+                if (gameObject.transform.position.x - player.transform.position.x > 19f)
+                {
+                    Destroy(gameObject);
+                }
+            }
+            else if (gameObject.tag == "MonsterBullet")
+            {
+                if (gameObject.transform.position.x - player.transform.position.x < -6.3f)
+                {
+                    Destroy(gameObject); //MissingReferenceException: The object of type 'Transform' has been destroyed but you are still trying to access it.
+                                         //player ölünce veriyor bu hatayý.
+
+
+                }
+            }
+
+        }
     }
 
     IEnumerator turnoffBullet()
     {
+
         yield return new WaitForSeconds(lifeTime);
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider target)
     {
-        if(target.tag == Tags.MONSTER || target.tag == Tags.PLAYER_TAG || target.tag == Tags.MONSTER_BULLET || target.tag ==Tags.PLAYER_BULLET )
+        if (target.tag == Tags.MONSTER || target.tag == Tags.PLAYER_TAG || target.tag == Tags.MONSTER_BULLET || target.tag == Tags.PLAYER_BULLET)
         {
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 

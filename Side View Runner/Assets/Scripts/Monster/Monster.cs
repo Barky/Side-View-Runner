@@ -6,85 +6,102 @@ public class Monster : MonoBehaviour
 {
     public GameObject monsterDiedEffect;
     public Transform Bullet;
-    public float distancefromPlayertoStartMove = 20f;
-    public float moveSpeedMinimum = 1f;
-    public float moveSpeedMaximum = 2f;
+    private float distancefromPlayertoStartMove = 19f;
+    private float moveSpeedMinimum = 0.5f;
+    private float moveSpeedMaximum = 1f;
 
-    private bool moveRight = false;
+    //private bool moveRight = false;
     private float movementSpeed;
     private bool isPlayerInRegion = false;
 
     private Transform playerTransform;
-    public bool canShoot, canMove;
+    [SerializeField] public bool canShootandMove = false;
     PlayerMovement movements;
 
-   // private string FUNCTION_TO_INVOKE = "startShooting";   kafam karýþmasýn diye yazmadým þimdi. ama normalde yap bunu.
-
-    private void Start()
+    private void Awake()
     {
+
+        playerTransform = GameObject.FindGameObjectWithTag(Tags.PLAYER_TAG).transform;
         movements = GameObject.Find("Player").GetComponent<PlayerMovement>();
 
-        if (Random.Range(0.0f, 1.0f) > 0.5f)
-        {
-            moveRight = true;
-        }
-        else
-        {
-            moveRight = false;
-        }
         movementSpeed = Random.Range(moveSpeedMinimum, moveSpeedMaximum);
-        playerTransform = GameObject.FindGameObjectWithTag(Tags.PLAYER_TAG).transform;
+
+        
+
+    }
+    private void Start()
+    {
+        StartCoroutine(constantshoot());
 
     }
     private void Update()
     {
-        canShoot = movements.gameStarted;
-        canMove  = movements.gameStarted;
+        canShootandMove  = movements.gameStarted;
+        
+        
+
         if (playerTransform)
         {
             float distanceFromPlayer = (playerTransform.position - transform.position).magnitude;
-            if(distanceFromPlayer < distancefromPlayertoStartMove)
-            {
-                if (canMove)
-                {
-                    if (moveRight)
-                    {
-                        transform.position = new Vector3(transform.position.x + Time.deltaTime * movementSpeed, transform.position.y, transform.position.z);
-                    }
-                    else
-                    {
-                        transform.position = new Vector3(transform.position.x - Time.deltaTime * movementSpeed, transform.position.y, transform.position.z);
 
-                    }
-                }
-                if (!isPlayerInRegion)
-                {
-                    if (canShoot)
-                    {
-                        InvokeRepeating("startShooting", 0.5f, 1.5f); // 1.5 saniyede bir, 0.5 saniyelik startshooting fonksiyonunu döndürecek
-                    }
-                    isPlayerInRegion = true;
-                }
+            if (distanceFromPlayer < distancefromPlayertoStartMove)
+            {
+                isPlayerInRegion = true;
+            }
+            else
+            {
+                isPlayerInRegion = false;
+            }
+
+            if (isPlayerInRegion && !canShootandMove)
+            {
+                Destroy(gameObject);
+            }
+
+
+            if (isPlayerInRegion && canShootandMove)
+            {
+                
+                    //monsters running only to player(left)
+                        transform.position = new Vector3(transform.position.x - Time.deltaTime * movementSpeed, transform.position.y, transform.position.z);
 
             }
             else
             {
-                CancelInvoke("startShooting");
+
+                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+
             }
         }
     }
-
-    void startShooting()
+    IEnumerator constantshoot()
     {
-        if (playerTransform)
+        while (true)
         {
-            Vector3 bulletPosition = transform.position;
-            bulletPosition.y += 1.5f;
-            bulletPosition.x -= 1f;
-            Transform newBullet = (Transform)Instantiate(Bullet, bulletPosition, Quaternion.identity);
+            if (playerTransform)
+            {
+                if (isPlayerInRegion && canShootandMove)
+                {
+                    Vector3 bulletPosition = transform.position;
+                    bulletPosition.y += 1f;
+                    bulletPosition.x -= 1f;
+                    Transform newBullet = (Transform)Instantiate(Bullet, bulletPosition, Quaternion.identity);
 
-            newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 800f);
-            newBullet.parent = transform;
+                    newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 300f);
+                    newBullet.parent = transform;
+
+                    yield return new WaitForSeconds(2.5f);
+                }
+                else
+                {
+                    yield return null;
+                }
+            }
+            else
+            {
+                //without this, while looping empty forever and game will crash.
+                break;
+            }
         }
     }
     private void OnTriggerEnter(Collider target)

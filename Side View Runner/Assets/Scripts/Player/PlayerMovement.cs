@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
 
      public float movementSpeed = 2.4f;
-    public float jumpPower = 5.5f;
+    public float jumpPower = 7.5f;
     public float radius = 0.3f;
     private Button jumpButton;
     public Transform groundCheckPosition;
@@ -87,12 +87,10 @@ public class PlayerMovement : MonoBehaviour
             canDoubleJump = false;
             rb.velocity = new Vector3(0f, jumpPower, 0);
            // rb.AddForce(new Vector3(0, secondJumpPower, 0));
-            Debug.Log("2 kere zýpladýk");
         }
 
         else if (isGrounded)
         {
-            Debug.Log("zýplýoz");
             playerAnim.didJump();
             rb.velocity = new Vector3(0f, jumpPower, 0);
             //rb.AddForce(new Vector3(0, jumpPower, 0));
@@ -125,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (target.gameObject.tag == Tags.PLATFORM_TAG)
         {
-            Debug.Log("platformdayýk");
+
         }
     }
 

@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public float health, score, level;
 
     [HideInInspector] public bool canPlayMusic = true;
+
+
     private void Awake()
     {
         MakeSingleton();

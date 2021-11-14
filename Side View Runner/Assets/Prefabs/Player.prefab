@@ -241,6 +241,7 @@ MonoBehaviour:
   layerGround:
     serializedVersion: 2
     m_Bits: 0
+  gameStarted: 0
   smokePosition: {fileID: 0}
 --- !u!82 &5466387676097669574
 AudioSource:
@@ -965,7 +966,7 @@ GameObject:
   - component: {fileID: 2050212721234955271}
   m_Layer: 0
   m_Name: Lerpz
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

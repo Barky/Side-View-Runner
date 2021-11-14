@@ -12,6 +12,7 @@ public class PlayerHealthDamageShoot : MonoBehaviour
 
     private Button ShootButton;
     private LevelGeneratorPooling level_generator_pooling;
+
     void Awake()
     {
         level_generator = GameObject.Find(Tags.LEVEL_GENERATOR_OBJ).GetComponent<LevelGenerator>();
@@ -20,13 +21,15 @@ public class PlayerHealthDamageShoot : MonoBehaviour
         ShootButton = GameObject.Find("Shoot").GetComponent<Button>();
 
         ShootButton.onClick.AddListener( () => Shoot() );
+        StartCoroutine(positioncheck());
     }
 
-    void FixedUpdate()
+
+    IEnumerator positioncheck()
     {
-        //Fire();
+        yield return new WaitForSeconds(4f);
+        Debug.Log("playerhealthdamage scriptinden: " + transform.position.x);
     }
-
     public void Shoot()
     {
         if (canShoot)
@@ -40,28 +43,10 @@ public class PlayerHealthDamageShoot : MonoBehaviour
             newbullet.parent = transform;
         }
     }
-//}
-//    void Fire()
-//    {
-//        if (Input.GetKeyDown(KeyCode.K))
-//        {
-//            if (canShoot)
-//            {
-
-//                Vector3 bulletPos = transform.position;
-//                bulletPos.y += 1.5f;
-//                bulletPos.x += 1f;
-//                Transform newbullet = (Transform)Instantiate(playerBullet, bulletPos, Quaternion.identity);
-//                newbullet.GetComponent<Rigidbody>().AddForce(transform.forward * 1500f);
-//                newbullet.parent = transform;
-//            }
-//        }
-//    }
 
     void OnTriggerEnter(Collider target)
     {
-        // kurþun bize çarparsa ölecez
-        // oyunun bittiðini game controller a söyleme scripti yazýlacak.
+
         if(target.tag == Tags.MONSTER_BULLET || target.tag == Tags.BOUNDS)
         {
 
@@ -70,13 +55,13 @@ public class PlayerHealthDamageShoot : MonoBehaviour
         }
         if (target.tag == Tags.MONSTER_BULLET)
         {
-            target.gameObject.SetActive(false);
+            Destroy(target.gameObject);
         }
         if (target.tag == "Health")
         {
             Debug.Log("health e çarpmýþ olmalýyýz.");
             GameplayController.instance.IncrementHealth();
-            target.gameObject.SetActive(false);
+            Destroy(target.gameObject);
         }
 
         //more platform çizgisinden geçince yenilerini üret
@@ -98,8 +83,7 @@ public class PlayerHealthDamageShoot : MonoBehaviour
         {
 
            GameplayController.instance.TakeDamage();
-            Debug.Log("monster a  çarpmýþ olmalýyýz.");
-            target.gameObject.SetActive(false);
+            Destroy(target.gameObject);
         }
     }
 
