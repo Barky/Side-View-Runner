@@ -36,7 +36,7 @@ public class PlayerHealthDamageShoot : MonoBehaviour
         {
 
             Vector3 bulletPos = transform.position;
-            bulletPos.y += 1.5f;
+            bulletPos.y += 1f;
             bulletPos.x += 1f;
             Transform newbullet = (Transform)Instantiate(playerBullet, bulletPos, Quaternion.identity);
             newbullet.GetComponent<Rigidbody>().AddForce(transform.forward * 1500f);

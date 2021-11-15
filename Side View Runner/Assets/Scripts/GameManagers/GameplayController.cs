@@ -12,7 +12,7 @@ public class GameplayController : MonoBehaviour
 
     public static GameplayController instance;
 
-    //[SerializeField] private AudioSource audios;
+    [SerializeField] private AudioSource audios;
 
     [SerializeField] private GameObject player;
 
@@ -27,14 +27,14 @@ public class GameplayController : MonoBehaviour
 
     private void Start()
     {
-        //if (GameManager.instance.canPlayMusic)
-        //{
-        //    audios.Play();
-        //}
-        //else if (!GameManager.instance.canPlayMusic)
-        //{
-        //    audios.Stop();
-        //}
+        if (GameManager.instance.canPlayMusic)
+        {
+            audios.Play();
+        }
+        else if (!GameManager.instance.canPlayMusic)
+        {
+            audios.Stop();
+        }
 
     }
     private void Awake()
